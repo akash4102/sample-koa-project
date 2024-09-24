@@ -8,7 +8,7 @@ utilities.Registry.set("config", config);
 utilities.Registry.set("env", env);
 
 // initializing databases and clients
-let mongoConn = (new utilities.DBClient.MongoDB.Client(config.mongo_instances.primary_1, null)).connect();
+let mongoConn = (new utilities.DBClient.MongoDB.Client(config.mongo_instances.primary_1, {})).connect();
 utilities.Registry.set("mongodb", mongoConn);
 
 // initializing models on the mongodb connection

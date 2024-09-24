@@ -33,10 +33,13 @@ class Base {
         this.error = null;
     }
 
-    throwError(code) {
+    throwError(code, message = null) {
         let err = ERROR_LIST[code];
         if (!err) {
             throw new Error('Internal Error');
+        }
+        if (message) {
+            err.message = message;
         }
         this.error = err;
         throw new Error(err.codeMsg);
@@ -74,7 +77,7 @@ class Base {
 				};
 				return;
 			}
-			throw err;
+			throw error;
         }
     }
 }
