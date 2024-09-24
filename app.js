@@ -4,6 +4,9 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(`./config/env/${env}.config.json`);
 const utilities = require("./src/utilities");
 
+utilities.Registry.set("config", config);
+utilities.Registry.set("env", env);
+
 // initializing databases and clients
 let mongoConn = (new utilities.DBClient.MongoDB.Client(config.mongo_instances.primary_1, null)).connect();
 utilities.Registry.set("mongodb", mongoConn);
